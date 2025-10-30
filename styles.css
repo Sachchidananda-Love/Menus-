@@ -6,6 +6,9 @@
   --radius-large: 24px;
   --radius-medium: 18px;
   --radius-small: 14px;
+  --face-offset-large: 12px;
+  --face-offset-medium: 10px;
+  --face-offset-small: 8px;
 }
 
 * {
@@ -69,7 +72,7 @@ body {
 
 
 .logo {
-  width: clamp(210px, 55vw, 260px);
+  width: clamp(250px, 60vw, 320px);
   height: auto;
 }
 
@@ -81,13 +84,14 @@ body {
 
 .social-button {
   position: relative;
-  width: 76px;
-  height: 76px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   background: var(--clay);
   text-decoration: none;
   display: block;
   overflow: hidden;
+  --face-offset: var(--face-offset-small);
 }
 
 .social-button .button-face {
@@ -96,13 +100,13 @@ body {
   place-items: center;
   width: 100%;
   height: 100%;
-  padding: 16px;
+  padding: 20px;
 }
 
 .social-button img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
+  width: 70%;
+  height: auto;
+  display: block;
 }
 
 .menu-grid {
@@ -122,19 +126,21 @@ body {
   text-decoration: none;
   color: inherit;
   display: block;
-  min-height: 140px;
+  min-height: 156px;
   overflow: hidden;
+  --face-offset: var(--face-offset-large);
 }
 
 .menu-button.large {
   grid-column: span 2;
-  min-height: 148px;
+  min-height: 172px;
 }
 
 .menu-button.link {
   display: flex;
   align-items: stretch;
-  min-height: 72px;
+  min-height: 80px;
+  --face-offset: var(--face-offset-small);
 }
 
 .button-face {
@@ -144,10 +150,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 22px;
-  transform: translate(-6px, -6px);
-  transition: transform 0.12s ease;
+  gap: 12px;
+  padding: 26px;
+  transform: translate(
+    calc(var(--face-offset, var(--face-offset-medium)) * -1),
+    calc(var(--face-offset, var(--face-offset-medium)) * -1)
+  );
+  transition: transform 0.08s ease;
 }
 
 .menu-button .button-face {
@@ -156,30 +165,33 @@ body {
 
 .menu-button.large .button-face {
   align-items: flex-start;
-  gap: 12px;
+  gap: 14px;
+  text-align: left;
 }
 
 .menu-button.link .button-face {
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  padding: 18px 22px;
+  padding: 20px 24px;
+  gap: 0;
 }
 
 .menu-button img {
-  width: 82px;
-  height: 82px;
-  object-fit: contain;
+  width: min(44vw, 112px);
+  height: auto;
+  max-height: 112px;
+  display: block;
 }
 
 .menu-button.large img {
-  width: 86px;
-  height: 86px;
+  width: min(42vw, 116px);
+  max-height: 116px;
 }
 
 .menu-button.link img {
-  width: 54px;
-  height: 54px;
+  width: 64px;
+  height: auto;
 }
 
 .menu-button .button-label {
@@ -187,6 +199,8 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.2px;
+  font-family: "Metropolis", "Poppins", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .menu-button.large .button-label {
@@ -402,6 +416,7 @@ body {
   display: block;
   text-decoration: none;
   overflow: hidden;
+  --face-offset: var(--face-offset-large);
 }
 
 .beans-card .card-face {
@@ -411,13 +426,17 @@ body {
   justify-content: center;
   align-items: center;
   padding: 26px;
-  transform: translate(-6px, -6px);
-  transition: transform 0.12s ease;
+  transform: translate(
+    calc(var(--face-offset, var(--face-offset-medium)) * -1),
+    calc(var(--face-offset, var(--face-offset-medium)) * -1)
+  );
+  transition: transform 0.08s ease;
 }
 
 .beans-card img {
   width: 100%;
   height: auto;
+  display: block;
 }
 
 .beans-card:active .card-face {

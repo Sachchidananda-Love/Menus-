@@ -32,8 +32,11 @@ const translations = {
 let isTransitioning = false;
 
 const i18nElements = Array.from(document.querySelectorAll("[data-i18n]"));
-const languageToggles = Array.from(
+const languageTracks = Array.from(
   document.querySelectorAll('[data-role="language-toggle"] .toggle-track')
+);
+const languageToggleButtons = Array.from(
+  document.querySelectorAll('[data-role="language-toggle"] .toggle-pill')
 );
 const pressableElements = Array.from(
   document.querySelectorAll(".menu-button, .social-button, .beans-card")
@@ -58,8 +61,17 @@ function applyTranslations() {
 }
 
 function syncLanguageToggles() {
-  languageToggles.forEach((track) => {
+  languageTracks.forEach((track) => {
     track.dataset.lang = STATE.language;
+  });
+  languageToggleButtons.forEach((button) => {
+    const isFrench = STATE.language === "FRA";
+    button.setAttribute("aria-pressed", String(isFrench));
+    button.setAttribute(
+      "aria-label",
+      isFrench ? "Basculer vers l'anglais" : "Switch to French"
+    );
+    button.dataset.activeLang = STATE.language;
   });
 }
 
@@ -84,10 +96,7 @@ function toggleLanguage() {
 }
 
 function attachToggleListeners() {
-  const toggleButtons = document.querySelectorAll(
-    '[data-role="language-toggle"] .toggle-pill'
-  );
-  toggleButtons.forEach((button) => {
+  languageToggleButtons.forEach((button) => {
     button.addEventListener("click", () => {
       toggleLanguage();
     });
