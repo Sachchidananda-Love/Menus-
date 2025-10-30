@@ -32,6 +32,7 @@ const translations = {
 let isTransitioning = false;
 
 const i18nElements = Array.from(document.querySelectorAll("[data-i18n]"));
+codex/create-responsive-home-page-layout-xq6cg7
 const languageTracks = Array.from(
   document.querySelectorAll('[data-role="language-toggle"] .toggle-track')
 );
@@ -41,6 +42,7 @@ const languageToggleButtons = Array.from(
 const pressableElements = Array.from(
   document.querySelectorAll(".menu-button, .social-button, .beans-card")
 );
+ main
 const navButtons = Array.from(
   document.querySelectorAll('[data-screen-target]')
 );
@@ -61,6 +63,7 @@ function applyTranslations() {
 }
 
 function syncLanguageToggles() {
+codex/create-responsive-home-page-layout-xq6cg7
   languageTracks.forEach((track) => {
     track.dataset.lang = STATE.language;
   });
@@ -73,6 +76,7 @@ function syncLanguageToggles() {
     );
     button.dataset.activeLang = STATE.language;
   });
+main
 }
 
 function updateMenuImages() {
@@ -96,7 +100,9 @@ function toggleLanguage() {
 }
 
 function attachToggleListeners() {
+codex/create-responsive-home-page-layout-xq6cg7
   languageToggleButtons.forEach((button) => {
+main
     button.addEventListener("click", () => {
       toggleLanguage();
     });
@@ -113,7 +119,9 @@ function addButtonPressEffect(element) {
   element.addEventListener("pointercancel", removePress);
 }
 
+codex/create-responsive-home-page-layout-xq6cg7
 pressableElements.forEach(addButtonPressEffect);
+main
 
 function showScreen(targetId, direction = "forward") {
   if (isTransitioning) return;

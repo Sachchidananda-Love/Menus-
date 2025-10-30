@@ -6,9 +6,11 @@
   --radius-large: 24px;
   --radius-medium: 18px;
   --radius-small: 14px;
+codex/create-responsive-home-page-layout-xq6cg7
   --face-offset-large: 12px;
   --face-offset-medium: 10px;
   --face-offset-small: 8px;
+main
 }
 
 * {
@@ -23,8 +25,10 @@ body {
 body {
   margin: 0;
   background: var(--sand);
+codex/create-responsive-home-page-layout-xq6cg7
   font-family: "Metropolis", "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
+main
   color: var(--pine);
   display: flex;
   justify-content: center;
@@ -70,15 +74,18 @@ body {
   margin-top: -16px;
 }
 
+codex/create-responsive-home-page-layout-xq6cg7
 
 .logo {
   width: clamp(250px, 60vw, 320px);
+main
   height: auto;
 }
 
 .social-row {
   display: flex;
   justify-content: center;
+codex/create-responsive-home-page-layout-xq6cg7
   gap: 22px;
 }
 
@@ -107,6 +114,7 @@ body {
   width: 70%;
   height: auto;
   display: block;
+main
 }
 
 .menu-grid {
@@ -126,30 +134,37 @@ body {
   text-decoration: none;
   color: inherit;
   display: block;
+codex/create-responsive-home-page-layout-xq6cg7
   min-height: 156px;
   overflow: hidden;
   --face-offset: var(--face-offset-large);
+main
 }
 
 .menu-button.large {
   grid-column: span 2;
+codex/create-responsive-home-page-layout-xq6cg7
   min-height: 172px;
+main
 }
 
 .menu-button.link {
   display: flex;
   align-items: stretch;
+codex/create-responsive-home-page-layout-xq6cg7
   min-height: 80px;
   --face-offset: var(--face-offset-small);
 }
 
 .button-face {
+main
   background: var(--cream);
   border-radius: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+codex/create-responsive-home-page-layout-xq6cg7
   gap: 12px;
   padding: 26px;
   transform: translate(
@@ -161,18 +176,22 @@ body {
 
 .menu-button .button-face {
   height: 100%;
+main
 }
 
 .menu-button.large .button-face {
   align-items: flex-start;
+codex/create-responsive-home-page-layout-xq6cg7
   gap: 14px;
   text-align: left;
+main
 }
 
 .menu-button.link .button-face {
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
+codex/create-responsive-home-page-layout-xq6cg7
   padding: 20px 24px;
   gap: 0;
 }
@@ -192,6 +211,7 @@ body {
 .menu-button.link img {
   width: 64px;
   height: auto;
+main
 }
 
 .menu-button .button-label {
@@ -199,8 +219,10 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.2px;
+codex/create-responsive-home-page-layout-xq6cg7
   font-family: "Metropolis", "Poppins", system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
+main
 }
 
 .menu-button.large .button-label {
@@ -217,11 +239,13 @@ body {
 }
 
 .menu-button.pressed .button-face,
+codex/create-responsive-home-page-layout-xq6cg7
 .menu-button:active .button-face,
 .social-button.pressed .button-face,
 .social-button:active .button-face,
 .beans-card.pressed .card-face,
 .beans-card:active .card-face {
+main
   transform: translate(0, 0);
 }
 
@@ -415,8 +439,10 @@ body {
   padding: 0;
   display: block;
   text-decoration: none;
+codex/create-responsive-home-page-layout-xq6cg7
   overflow: hidden;
   --face-offset: var(--face-offset-large);
+main
 }
 
 .beans-card .card-face {
@@ -426,17 +452,21 @@ body {
   justify-content: center;
   align-items: center;
   padding: 26px;
+ codex/create-responsive-home-page-layout-xq6cg7
   transform: translate(
     calc(var(--face-offset, var(--face-offset-medium)) * -1),
     calc(var(--face-offset, var(--face-offset-medium)) * -1)
   );
   transition: transform 0.08s ease;
+main
 }
 
 .beans-card img {
   width: 100%;
   height: auto;
+codex/create-responsive-home-page-layout-xq6cg7
   display: block;
+main
 }
 
 .beans-card:active .card-face {
