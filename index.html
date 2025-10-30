@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Café Palmier Menus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
+      defer
+    ></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <section id="home-screen" class="screen active">
+        <div class="top-bar">
+          <div class="language-toggle" data-role="language-toggle">
+            <button type="button" class="toggle-pill" aria-label="Toggle language">
+              <span class="toggle-track">
+                <span class="toggle-thumb"></span>
+                <span class="toggle-option" data-lang="ENG">ENG</span>
+                <span class="toggle-option" data-lang="FRA">FRA</span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="logo-container">
+          <img src="Assets/palmier-logo.png" alt="Palmier logo" class="logo" />
+        </div>
+        <div class="social-row">
+          <a
+            class="social-button"
+            href="https://www.instagram.com/cafe.palmier?igsh=MWsxeDBrZHA3Ym5z"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+          >
+            <img src="Assets/instagram.png" alt="Instagram" />
+          </a>
+          <a
+            class="social-button"
+            href="https://www.tiktok.com/@cafe.palmier"
+            target="_blank"
+            rel="noopener"
+            aria-label="TikTok"
+          >
+            <img src="Assets/tik-tok.png" alt="TikTok" />
+          </a>
+          <a
+            class="social-button"
+            href="https://www.facebook.com/share/14JDLJfr2qp/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+          >
+            <img src="Assets/faceook.png" alt="Facebook" />
+          </a>
+        </div>
+        <div class="menu-grid">
+          <button type="button" class="menu-button" data-screen-target="food-screen">
+            <span class="button-face">
+              <img src="Assets/food.png" alt="Food" />
+              <span class="button-label" data-i18n="food"></span>
+            </span>
+          </button>
+          <button type="button" class="menu-button" data-screen-target="tea-screen">
+            <span class="button-face">
+              <img src="Assets/tea.png" alt="Tea" />
+              <span class="button-label" data-i18n="tea"></span>
+            </span>
+          </button>
+          <button type="button" class="menu-button" data-screen-target="cocktails-screen">
+            <span class="button-face">
+              <img src="Assets/cocktail.png" alt="Cocktails" />
+              <span class="button-label" data-i18n="cocktails"></span>
+            </span>
+          </button>
+          <button type="button" class="menu-button" data-screen-target="coffee-screen">
+            <span class="button-face">
+              <img src="Assets/coffee.png" alt="Coffee" />
+              <span class="button-label" data-i18n="coffee"></span>
+            </span>
+          </button>
+        </div>
+        <button type="button" class="menu-button large" data-screen-target="beans-screen">
+          <span class="button-face">
+            <div class="button-icon-text">
+              <img src="Assets/coffee-shelf.png" alt="Coffee shelf" />
+              <span class="button-label" data-i18n="discover"></span>
+            </div>
+          </span>
+        </button>
+        <a
+          class="menu-button link"
+          href="https://www.google.com/search?sca_esv=f60ecab60e0aa489&sxsrf=AE3TifOqxmle3mCawmW8QMBLC3AjyoMUhg:1761669360921&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E8q7DkqADv5wRTdBpYumF5gqCEfO6tp_bZRoBSIm_7g3w6n0sxuVia957VyiU3Lyx1bNyMTgKWSmBKbTs44Z0-tiwanV&q=Palmier+Reviews&sa=X&ved=2ahUKEwiYr-DjqceQAxXmFjQIHeLbDtkQ0bkNegQILhAD&biw=1457&bih=817&dpr=2"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="button-face">
+            <span class="button-label" data-i18n="review"></span>
+            <img src="Assets/review.png" alt="Leave a review" />
+          </span>
+        </a>
+      </section>
+
+      <section id="food-screen" class="screen">
+        <header class="screen-header">
+          <button type="button" class="back-button" data-back>
+            <span class="back-icon">&#x2039;</span>
+            <span class="back-label" data-i18n="back"></span>
+          </button>
+          <div class="language-toggle" data-role="language-toggle">
+            <button type="button" class="toggle-pill" aria-label="Toggle language">
+              <span class="toggle-track">
+                <span class="toggle-thumb"></span>
+                <span class="toggle-option" data-lang="ENG">ENG</span>
+                <span class="toggle-option" data-lang="FRA">FRA</span>
+              </span>
+            </button>
+          </div>
+        </header>
+        <div class="food-viewer" id="food-viewer">
+          <canvas id="food-pdf"></canvas>
+        </div>
+        <div class="food-controls">
+          <button type="button" class="page-button" data-page="prev" aria-label="Previous page">
+            <span class="triangle left"></span>
+          </button>
+          <span class="page-indicator" id="page-indicator">1/1</span>
+          <button type="button" class="page-button" data-page="next" aria-label="Next page">
+            <span class="triangle right"></span>
+          </button>
+        </div>
+      </section>
+
+      <section id="tea-screen" class="screen">
+        <header class="screen-header">
+          <button type="button" class="back-button" data-back>
+            <span class="back-icon">&#x2039;</span>
+            <span class="back-label" data-i18n="back"></span>
+          </button>
+          <div class="language-toggle" data-role="language-toggle">
+            <button type="button" class="toggle-pill" aria-label="Toggle language">
+              <span class="toggle-track">
+                <span class="toggle-thumb"></span>
+                <span class="toggle-option" data-lang="ENG">ENG</span>
+                <span class="toggle-option" data-lang="FRA">FRA</span>
+              </span>
+            </button>
+          </div>
+        </header>
+        <div class="menu-image-wrapper">
+          <img
+            id="tea-menu"
+            src="Assets/menus/tea-eng.png"
+            data-src-eng="Assets/menus/tea-eng.png"
+            data-src-fra="Assets/menus/tea-fra.png"
+            alt="Tea menu"
+          />
+        </div>
+      </section>
+
+      <section id="cocktails-screen" class="screen">
+        <header class="screen-header">
+          <button type="button" class="back-button" data-back>
+            <span class="back-icon">&#x2039;</span>
+            <span class="back-label" data-i18n="back"></span>
+          </button>
+        </header>
+        <div class="menu-image-wrapper">
+          <img
+            src="Assets/menus/cocktails.png"
+            alt="Cocktails menu"
+          />
+        </div>
+      </section>
+
+      <section id="coffee-screen" class="screen">
+        <header class="screen-header">
+          <button type="button" class="back-button" data-back>
+            <span class="back-icon">&#x2039;</span>
+            <span class="back-label" data-i18n="back"></span>
+          </button>
+          <div class="language-toggle" data-role="language-toggle">
+            <button type="button" class="toggle-pill" aria-label="Toggle language">
+              <span class="toggle-track">
+                <span class="toggle-thumb"></span>
+                <span class="toggle-option" data-lang="ENG">ENG</span>
+                <span class="toggle-option" data-lang="FRA">FRA</span>
+              </span>
+            </button>
+          </div>
+        </header>
+        <div class="menu-image-wrapper">
+          <img
+            id="coffee-menu"
+            src="Assets/menus/coffee-eng.png"
+            data-src-eng="Assets/menus/coffee-eng.png"
+            data-src-fra="Assets/menus/coffee-fra.png"
+            alt="Coffee menu"
+          />
+        </div>
+      </section>
+
+      <section id="beans-screen" class="screen">
+        <header class="screen-header sticky">
+          <button type="button" class="back-button" data-back>
+            <span class="back-icon">&#x2039;</span>
+            <span class="back-label" data-i18n="back"></span>
+          </button>
+        </header>
+        <div class="beans-grid">
+          <a
+            class="beans-card"
+            href="https://anchoredcoffee.com/collections/all-coffee"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/anchored.png" alt="Anchored Coffee" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://september.coffee/en-us/collections/coffee"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/september.png" alt="September Coffee" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://www.quietlycoffee.com/collections/our-coffee"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/quietrly.png" alt="Quietly Coffee" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://www.moduscoffee.com/shop/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/modus.png" alt="Modus Coffee" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://monogramcoffee.com/en-us?"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/monogram.png" alt="Monogram Coffee" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://thombargen.com/collections/frontpage"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/thom-bargen.png" alt="Thom Bargen" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://javaroasters.ca/collections/coffee"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/java.png" alt="Java Roasters" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://junglelivraisoncafe.com/collections/classics"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/jungle.png" alt="Jungle" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://ethicaroasters.com/collections/shop-all"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/ethica.png" alt="Ethica Roasters" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://yamabikocoffeeroasters.com/collections/all"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/yamabiko.png" alt="Yamabiko Coffee" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://cafepista.com/en/collections/sacs"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/pista.png" alt="Pista" />
+            </span>
+          </a>
+          <a
+            class="beans-card"
+            href="https://www.trafficcoffee.com/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="card-face">
+              <img src="Assets/coffee-shelf/traffic.png" alt="Traffic Coffee" />
+            </span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
