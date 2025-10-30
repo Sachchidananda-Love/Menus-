@@ -1,0 +1,439 @@
+:root {
+  --sand: #e9d3c5;
+  --cream: #e8e1d4;
+  --clay: #bd8d75;
+  --pine: #42633d;
+  --radius-large: 24px;
+  --radius-medium: 18px;
+  --radius-small: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--sand);
+  font-family: "Metropolis", "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: var(--pine);
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  position: relative;
+  width: min(420px, 100vw);
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  padding: 28px 22px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--sand);
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(0);
+  transition: transform 0.35s ease;
+  overflow-y: auto;
+}
+
+.screen.active {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -16px;
+}
+
+
+.logo {
+  width: clamp(210px, 55vw, 260px);
+  height: auto;
+}
+
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+.social-button {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--clay);
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+}
+
+.social-button .button-face {
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+}
+
+.social-button img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.menu-button {
+  position: relative;
+  background: var(--clay);
+  border: none;
+  border-radius: var(--radius-large);
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  min-height: 140px;
+  overflow: hidden;
+}
+
+.menu-button.large {
+  grid-column: span 2;
+  min-height: 148px;
+}
+
+.menu-button.link {
+  display: flex;
+  align-items: stretch;
+  min-height: 72px;
+}
+
+.button-face {
+  background: var(--cream);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 22px;
+  transform: translate(-6px, -6px);
+  transition: transform 0.12s ease;
+}
+
+.menu-button .button-face {
+  height: 100%;
+}
+
+.menu-button.large .button-face {
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.menu-button.link .button-face {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 18px 22px;
+}
+
+.menu-button img {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+}
+
+.menu-button.large img {
+  width: 86px;
+  height: 86px;
+}
+
+.menu-button.link img {
+  width: 54px;
+  height: 54px;
+}
+
+.menu-button .button-label {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.menu-button.large .button-label {
+  font-size: 20px;
+  text-transform: none;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.menu-button.link .button-label {
+  text-transform: none;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.menu-button.pressed .button-face,
+.menu-button:active .button-face,
+.social-button.pressed .button-face,
+.social-button:active .button-face,
+.beans-card.pressed .card-face,
+.beans-card:active .card-face {
+  transform: translate(0, 0);
+}
+
+.button-icon-text {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.language-toggle {
+  position: relative;
+}
+
+.toggle-pill {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.toggle-track {
+  position: relative;
+  width: 132px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--clay);
+}
+
+.toggle-option {
+  position: relative;
+  z-index: 1;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  width: 60px;
+  border-radius: 999px;
+  background: var(--sand);
+  box-shadow: inset 0 0 0 2px var(--cream);
+  transition: transform 0.25s ease;
+  transform: translateX(0);
+}
+
+.toggle-track[data-lang="FRA"] .toggle-thumb {
+  transform: translateX(64px);
+}
+
+.toggle-track[data-lang="ENG"] .toggle-thumb {
+  transform: translateX(0);
+}
+
+.toggle-track[data-lang="ENG"] .toggle-option[data-lang="ENG"] {
+  color: var(--pine);
+}
+
+.toggle-track[data-lang="ENG"] .toggle-option[data-lang="FRA"] {
+  color: var(--clay);
+}
+
+.toggle-track[data-lang="FRA"] .toggle-option[data-lang="ENG"] {
+  color: var(--clay);
+}
+
+.toggle-track[data-lang="FRA"] .toggle-option[data-lang="FRA"] {
+  color: var(--pine);
+}
+
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.screen-header.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding-bottom: 8px;
+  background: var(--sand);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--pine);
+  font-size: 18px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.back-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.menu-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-image-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-large);
+}
+
+.food-viewer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--cream);
+  border-radius: var(--radius-large);
+  padding: 18px;
+}
+
+#food-pdf {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-medium);
+}
+
+.food-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.page-button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--cream);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.page-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12px 18px 12px 0;
+  border-color: transparent var(--pine) transparent transparent;
+  border-radius: 4px;
+}
+
+.triangle.right {
+  transform: rotate(180deg);
+}
+
+.page-indicator {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.beans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding-bottom: 24px;
+}
+
+.beans-card {
+  background: var(--clay);
+  border-radius: var(--radius-large);
+  padding: 0;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.beans-card .card-face {
+  background: var(--cream);
+  border-radius: var(--radius-large);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 26px;
+  transform: translate(-6px, -6px);
+  transition: transform 0.12s ease;
+}
+
+.beans-card img {
+  width: 100%;
+  height: auto;
+}
+
+.beans-card:active .card-face {
+  transform: translate(0, 0);
+}
+
+@media (max-width: 360px) {
+  .toggle-track {
+    width: 120px;
+  }
+
+  .toggle-thumb {
+    width: 54px;
+  }
+
+  .toggle-track[data-lang="FRA"] .toggle-thumb {
+    transform: translateX(58px);
+  }
+}
