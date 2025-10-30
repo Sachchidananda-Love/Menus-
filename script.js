@@ -32,10 +32,17 @@ const translations = {
 let isTransitioning = false;
 
 const i18nElements = Array.from(document.querySelectorAll("[data-i18n]"));
-const languageToggles = Array.from(
+codex/create-responsive-home-page-layout-xq6cg7
+const languageTracks = Array.from(
   document.querySelectorAll('[data-role="language-toggle"] .toggle-track')
 );
-const menuButtons = Array.from(document.querySelectorAll(".menu-button"));
+const languageToggleButtons = Array.from(
+  document.querySelectorAll('[data-role="language-toggle"] .toggle-pill')
+);
+const pressableElements = Array.from(
+  document.querySelectorAll(".menu-button, .social-button, .beans-card")
+);
+ main
 const navButtons = Array.from(
   document.querySelectorAll('[data-screen-target]')
 );
@@ -56,9 +63,20 @@ function applyTranslations() {
 }
 
 function syncLanguageToggles() {
-  languageToggles.forEach((track) => {
+codex/create-responsive-home-page-layout-xq6cg7
+  languageTracks.forEach((track) => {
     track.dataset.lang = STATE.language;
   });
+  languageToggleButtons.forEach((button) => {
+    const isFrench = STATE.language === "FRA";
+    button.setAttribute("aria-pressed", String(isFrench));
+    button.setAttribute(
+      "aria-label",
+      isFrench ? "Basculer vers l'anglais" : "Switch to French"
+    );
+    button.dataset.activeLang = STATE.language;
+  });
+main
 }
 
 function updateMenuImages() {
@@ -82,10 +100,9 @@ function toggleLanguage() {
 }
 
 function attachToggleListeners() {
-  const toggleButtons = document.querySelectorAll(
-    '[data-role="language-toggle"] .toggle-pill'
-  );
-  toggleButtons.forEach((button) => {
+codex/create-responsive-home-page-layout-xq6cg7
+  languageToggleButtons.forEach((button) => {
+main
     button.addEventListener("click", () => {
       toggleLanguage();
     });
@@ -102,7 +119,9 @@ function addButtonPressEffect(element) {
   element.addEventListener("pointercancel", removePress);
 }
 
-menuButtons.forEach(addButtonPressEffect);
+codex/create-responsive-home-page-layout-xq6cg7
+pressableElements.forEach(addButtonPressEffect);
+main
 
 function showScreen(targetId, direction = "forward") {
   if (isTransitioning) return;
